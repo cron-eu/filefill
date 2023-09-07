@@ -1,8 +1,8 @@
 # TYPO3 Extension filefill
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/ichhabrecht/filefill.svg)](https://packagist.org/packages/ichhabrecht/filefill)
-[![Build Status](https://img.shields.io/travis/IchHabRecht/filefill/master.svg)](https://travis-ci.org/IchHabRecht/filefill)
-[![StyleCI](https://styleci.io/repos/123628122/shield?branch=master)](https://styleci.io/repos/123628122)
+[![Build Status](https://img.shields.io/travis/IchHabRecht/filefill/main.svg)](https://travis-ci.org/IchHabRecht/filefill)
+[![StyleCI](https://styleci.io/repos/123628122/shield?branch=main)](https://styleci.io/repos/123628122)
 
 Find and fetch missing local files from different remotes.
 
@@ -64,6 +64,30 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['filefill']['storages'][1] = [
         'configuration' => [
             'youtube'  => 'dQw4w9WgXcQ',
             'vimeo'    => '148751763',
+		],
+	],
+	[
+        'identifier' => 'imagebuilder',
+        'configuration' => [
+            'backgroundColor' => '#FFFFFF',
+            'textColor' => '#000000',
+        ],
+    ],
+    [
+        'identifier' => 'static',
+        'configuration' => [
+            'path/to/example/file.txt' => 'Hello world!',
+            'another' => [
+                'path' => [
+                    'to' => [
+                        'anotherFile.txt' => 'Lorem ipsum',
+                        '*.youtube' => 'yiJjpKzCVE4',
+                    ],
+                    '*' => 'This file was found in /another/path folder.',
+                ],
+            ],
+            '*.vimeo' => '143018597',
+            '*' => 'This is some static text for all other files.',
         ],
     ],
 ];
@@ -117,6 +141,40 @@ Configuration:
 - no configuration required (the checkbox is just a field placeholder)
 
 This resource can be the last one in the chain but can handle image files only.
+
+### Image builder
+
+Create an empty image with the correct resolution of the original file. The height and width is added as a text layer.
+
+Configuration:
+
+- Background color: Enter a valid hex code as background color
+- Text color: Enter a valid hex code as text color
+
+### Static file
+
+Ensure missing files will be available. By default, an empty file will be created.
+
+Configuration:
+
+- You can configure the content of a file by its path or extension
+
+Please use *TypoScript syntax* for **record configuration**.
+
+```
+path/to/example/file.txt = Hello world!
+another {
+    path {
+        to {
+            anotherFile\.txt = Lorem ipsum
+            *\.youtube => yiJjpKzCVE4
+        }
+        * = This file was found in /another/path folder.
+    }
+}
+*\.vimeo = 143018597
+* = This is some static text for all other files.
+```
 
 ## Additional resources
 
@@ -191,5 +249,7 @@ all files were properly created on your current system.
 
 ## Community
 
+- Thanks to [b13](https://b13.com) that sponsored the maintenance of this extension with a sponsorship
+- Thanks to [Wolfgang Wagner](https://wwagner.net) who sponsored the maintenance of this extension with a sponsorship
 - Thanks to [Marcus Schwemer](https://twitter.com/MarcusSchwemer) who wrote about filefill in his blog [TYPO3worx](https://typo3worx.eu/2018/03/eight-typo3-extensions-making-developers-happy/)
 - Thanks to [Thomas Löffler](https://spooner-web.de) for his ongoing support as [Patron](https://www.patreon.com/IchHabRecht)

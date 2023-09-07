@@ -33,6 +33,15 @@
             <trans-unit id="sys_file_storage.filefill.ascii">
                 <source>Ascii</source>
             </trans-unit>
+            <trans-unit id="sys_file_storage.filefill.imagebuilder">
+                <source>Image builder</source>
+            </trans-unit>
+            <trans-unit id="sys_file_storage.filefill.colors">
+                <source>Background color, text color</source>
+            </trans-unit>
+            <trans-unit id="sys_file_storage.filefill.static">
+                <source>Static file</source>
+            </trans-unit>
             <trans-unit id="sys_file_storage.filefill.no_missing">
                 <source>No missing files found!</source>
             </trans-unit>

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace IchHabRecht\Filefill\Resource\Domain;
+namespace IchHabRecht\Filefill\Resource\Handler;
 
 /*
  * This file is part of the TYPO3 extension filefill.
@@ -18,6 +18,7 @@ namespace IchHabRecht\Filefill\Resource\Domain;
  */
 
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\TransferException;
 use IchHabRecht\Filefill\Resource\RemoteResourceInterface;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Resource\FileInterface;
@@ -60,7 +61,7 @@ class DomainResource implements RemoteResourceInterface
             $response = $this->requestFactory->request($this->url . ltrim($filePath, '/'), 'HEAD');
 
             return $response->getStatusCode() === 200;
-        } catch (RequestException $e) {
+        } catch (TransferException $e) {
             return false;
         }
     }

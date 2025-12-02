@@ -54,7 +54,7 @@ class PicsumResource implements RemoteResourceInterface
      * @param FileInterface|null $fileObject
      * @return bool
      */
-    public function hasFile($fileIdentifier, $filePath, FileInterface $fileObject = null): bool
+    public function hasFile($fileIdentifier, $filePath, ?FileInterface $fileObject = null): bool
     {
         if (is_null($fileObject)) {
             return false;
@@ -69,7 +69,7 @@ class PicsumResource implements RemoteResourceInterface
      * @param FileInterface|null $fileObject
      * @return string
      */
-    public function getFile($fileIdentifier, $filePath, FileInterface $fileObject = null)
+    public function getFile($fileIdentifier, $filePath, ?FileInterface $fileObject = null)
     {
         if (is_null($fileObject)) {
             return false;

@@ -43,7 +43,7 @@ class PicsumResource implements RemoteResourceInterface
      */
     protected $url = 'https://picsum.photos/id/%s/%s/%s.%s';
 
-    public function __construct($_, RequestFactory $requestFactory = null)
+    public function __construct($_, ?RequestFactory $requestFactory = null)
     {
         $this->requestFactory = $requestFactory ?: GeneralUtility::makeInstance(RequestFactory::class);
     }
